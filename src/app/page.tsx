@@ -86,9 +86,7 @@ export default function Home() {
         <section className="hero" id="top">
           <div className="hero-copy" data-reveal="lift">
             <h1>
-              <TimeGreeting />
-              <br />
-              <span>Riyoです。</span>
+              Riyoです。
             </h1>
             <p className="intro">
               気になったものを作ったり、コードを書いたりしています。
@@ -116,7 +114,9 @@ export default function Home() {
                 sizes="(max-width: 720px) 78vw, 520px"
               />
             </div>
-            <p className="portrait-note">だいたいこんな感じ</p>
+            <p className="greeting-bubble" aria-live="polite">
+              <TimeGreeting />
+            </p>
           </div>
         </section>
 

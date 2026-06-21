@@ -141,11 +141,6 @@ h1 {
   line-height: 0.98;
 }
 
-h1 span {
-  color: #79594c;
-  font-style: italic;
-}
-
 .intro {
   max-width: 31rem;
   margin-bottom: 30px;
@@ -186,16 +181,51 @@ h1 span {
   object-fit: cover;
 }
 
-.portrait-note {
+.greeting-bubble {
   position: absolute;
-  right: 0;
-  bottom: 7%;
+  top: 7%;
+  left: -5%;
+  z-index: 2;
+  min-width: 9.5em;
   margin: 0;
-  padding: 5px 8px;
-  color: var(--muted);
-  background: var(--paper);
-  font-size: 0.78rem;
-  transform: rotate(-4deg);
+  padding: 14px 18px;
+  border: 1px solid var(--ink);
+  border-radius: 48% 52% 50% 50% / 52% 48% 52% 48%;
+  color: var(--ink);
+  background: #fffaf3;
+  box-shadow: 5px 6px 0 #e5d6c6;
+  font-family: Georgia, "Yu Mincho", serif;
+  font-size: clamp(0.95rem, 1.7vw, 1.12rem);
+  line-height: 1.35;
+  text-align: center;
+  transform: rotate(-3deg);
+}
+
+.greeting-bubble::before,
+.greeting-bubble::after {
+  position: absolute;
+  content: "";
+  transform: rotate(23deg);
+}
+
+.greeting-bubble::before {
+  right: 15%;
+  bottom: -16px;
+  width: 21px;
+  height: 21px;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  background: #fffaf3;
+}
+
+.greeting-bubble::after {
+  right: 12%;
+  bottom: -24px;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  background: #fffaf3;
 }
 
 .places-section {
@@ -582,6 +612,12 @@ a:focus-visible {
   .portrait {
     width: min(82vw, 380px);
     box-shadow: 10px 12px 0 #e5d6c6;
+  }
+
+  .greeting-bubble {
+    top: 0;
+    left: 0;
+    padding: 12px 15px;
   }
 
   .section-heading {
