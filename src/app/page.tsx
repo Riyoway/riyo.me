@@ -25,6 +25,7 @@ const places = [
     href: "https://apps.riyo.me",
     tone: "peach",
     world: "apps-world",
+    image: "/portals/apps.webp",
     signal: "ENTER THE STORE",
     status: "OPEN",
   },
@@ -36,6 +37,7 @@ const places = [
     href: "https://blog.riyo.me",
     tone: "cream",
     world: "blog-world",
+    image: "/portals/blog.webp",
     signal: "WORDS IN MOTION",
     status: "SOON",
   },
@@ -47,6 +49,7 @@ const places = [
     href: "https://lab.riyo.me",
     tone: "violet",
     world: "lab-world",
+    image: "/portals/lab.webp",
     signal: "UNKNOWN AHEAD",
     status: "SOON",
   },
@@ -58,6 +61,7 @@ const places = [
     href: "https://scripts.riyo.me",
     tone: "navy",
     world: "scripts-world",
+    image: "/portals/scripts.webp",
     signal: "AUTOMATE A LITTLE",
     status: "SOON",
   },
@@ -161,11 +165,14 @@ export default function Home() {
                   <span className="portal-orbit portal-orbit-inner" />
                   <span className="portal-gate">
                     <span className={`portal-world ${place.world}`}>
-                      <span className="world-stars" />
-                      <span className="world-horizon" />
-                      <span className="world-object world-object-one" />
-                      <span className="world-object world-object-two" />
-                      <span className="world-path" />
+                      <Image
+                        className="portal-art"
+                        src={place.image}
+                        alt=""
+                        width={1200}
+                        height={1200}
+                        sizes="(max-width: 680px) 55vw, 270px"
+                      />
                     </span>
                   </span>
                   <span className="portal-signal">{place.signal}</span>
