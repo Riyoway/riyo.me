@@ -104,6 +104,10 @@ export default function Home() {
             aria-label="Riyoのイラスト"
             data-reveal="portrait"
           >
+            <div className="orbit orbit-one" aria-hidden="true" />
+            <div className="orbit orbit-two" aria-hidden="true" />
+            <div className="spark spark-one" aria-hidden="true" />
+            <div className="spark spark-two" aria-hidden="true" />
             <div className="portrait">
               <Image
                 src="/riyo-icon.png"
