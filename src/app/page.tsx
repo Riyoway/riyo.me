@@ -174,9 +174,35 @@ export default function Home() {
         </section>
       </main>
 
-      <footer data-reveal="fade">
-        <p>© {new Date().getFullYear()} Riyo</p>
-        <p>見に来てくれてありがとう。</p>
+      <footer className="site-footer" data-reveal="lift">
+        <div className="footer-main">
+          <p className="footer-kicker">また何か増えます。</p>
+          <p className="footer-title">見に来てくれてありがとう。</p>
+        </div>
+
+        <nav className="footer-links" aria-label="フッターナビゲーション">
+          <a
+            href="https://github.com/Riyoway"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub
+            <ArrowUpRight />
+          </a>
+          <a href="mailto:ryohsg@gmail.com">
+            Mail
+            <ArrowUpRight />
+          </a>
+          <a href="#top">
+            上へ戻る
+            <span aria-hidden="true">↑</span>
+          </a>
+        </nav>
+
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} Riyo</p>
+          <p>riyo.me</p>
+        </div>
       </footer>
     </>
   );
