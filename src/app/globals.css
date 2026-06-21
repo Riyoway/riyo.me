@@ -170,8 +170,9 @@ h3 {
 }
 
 h1 {
-  max-width: 760px;
+  width: 100%;
   margin-bottom: 28px;
+  overflow: hidden;
   font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
   font-size: clamp(3.45rem, 6.2vw, 6.2rem);
   font-weight: 500;
@@ -179,9 +180,46 @@ h1 {
   line-height: 0.98;
 }
 
-h1 span {
+.title-marquee {
+  margin-right: calc((100vw - min(1180px, calc(100vw - 48px))) / -2);
+  padding: 0.08em 0 0.14em;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.title-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: title-marquee 18s linear infinite;
+}
+
+.title-marquee-group {
+  display: flex;
+  padding-right: 0.34em;
+  align-items: baseline;
+  flex-shrink: 0;
+  gap: 0.24em;
+  white-space: nowrap;
+}
+
+.title-spark {
   color: #76584c;
   font-style: italic;
+}
+
+.title-star {
+  width: 0.42em;
+  height: 0.42em;
+  flex: 0 0 auto;
+  background: var(--peach);
+  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+  transform: translateY(-0.18em);
+}
+
+@keyframes title-marquee {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .intro {
@@ -736,6 +774,10 @@ a:focus-visible {
     font-size: clamp(3rem, 15vw, 4.6rem);
   }
 
+  .title-marquee {
+    margin-right: -16px;
+  }
+
   .portrait-wrap {
     min-height: 390px;
   }
@@ -791,5 +833,14 @@ a:focus-visible {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .title-marquee-track {
+    animation: none !important;
+    transform: none;
+  }
+
+  .title-marquee-group:last-child {
+    display: none;
   }
 }
