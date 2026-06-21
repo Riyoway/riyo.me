@@ -83,7 +83,7 @@ export default function Home() {
 
       <main id="main">
         <section className="hero" id="top">
-          <div className="hero-copy">
+          <div className="hero-copy" data-reveal="lift">
             <h1>
               こんにちは。
               <br />
@@ -100,7 +100,11 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="portrait-wrap" aria-label="Riyoのイラスト">
+          <div
+            className="portrait-wrap"
+            aria-label="Riyoのイラスト"
+            data-reveal="portrait"
+          >
             <div className="portrait">
               <Image
                 src="/riyo-icon.png"
@@ -116,13 +120,17 @@ export default function Home() {
         </section>
 
         <section className="places-section" id="places">
-          <div className="section-heading">
+          <div className="section-heading" data-reveal="lift">
             <h2>置いてあるもの</h2>
             <p>入口を押すと、それぞれの場所へ行けます。</p>
           </div>
 
           <div className="portal-field">
-            <span className="portal-path" aria-hidden="true" />
+            <span
+              className="portal-path"
+              aria-hidden="true"
+              data-reveal="path"
+            />
             {places.map((place, index) => (
               <a
                 className={`portal-entry ${place.tone}`}
@@ -131,6 +139,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`${place.name}: ${place.description}（${place.note}）`}
+                data-reveal="portal"
               >
                 <span className="portal-wrap" aria-hidden="true">
                   <span className="portal-shadow" />
@@ -160,7 +169,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer>
+      <footer data-reveal="fade">
         <p>© {new Date().getFullYear()} Riyo</p>
         <p>見に来てくれてありがとう。</p>
       </footer>
