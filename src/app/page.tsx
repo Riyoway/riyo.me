@@ -24,6 +24,8 @@ const places = [
     description: "つくったアプリを並べる、小さなストア。",
     href: "https://apps.riyo.me",
     tone: "peach",
+    world: "apps-world",
+    signal: "ENTER THE STORE",
     status: "OPEN",
   },
   {
@@ -33,6 +35,8 @@ const places = [
     description: "考えたこと、学んだことの記録。",
     href: "https://blog.riyo.me",
     tone: "cream",
+    world: "blog-world",
+    signal: "WORDS IN MOTION",
     status: "SOON",
   },
   {
@@ -42,6 +46,8 @@ const places = [
     description: "途中でも出してみる、実験の置き場。",
     href: "https://lab.riyo.me",
     tone: "violet",
+    world: "lab-world",
+    signal: "UNKNOWN AHEAD",
     status: "SOON",
   },
   {
@@ -51,6 +57,8 @@ const places = [
     description: "日々の面倒を、少しだけ短くする道具。",
     href: "https://scripts.riyo.me",
     tone: "navy",
+    world: "scripts-world",
+    signal: "AUTOMATE A LITTLE",
     status: "SOON",
   },
 ];
@@ -147,6 +155,22 @@ export default function Home() {
                     {place.status}
                   </span>
                 </div>
+
+                <div className="portal-scene" aria-hidden="true">
+                  <span className="portal-orbit portal-orbit-outer" />
+                  <span className="portal-orbit portal-orbit-inner" />
+                  <span className="portal-gate">
+                    <span className={`portal-world ${place.world}`}>
+                      <span className="world-stars" />
+                      <span className="world-horizon" />
+                      <span className="world-object world-object-one" />
+                      <span className="world-object world-object-two" />
+                      <span className="world-path" />
+                    </span>
+                  </span>
+                  <span className="portal-signal">{place.signal}</span>
+                </div>
+
                 <div className="card-body">
                   <h3>{place.name}</h3>
                   <p>{place.description}</p>
