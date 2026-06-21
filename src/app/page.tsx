@@ -1,4 +1,5 @@
 import Image from "next/image";
+import TimeGreeting from "@/components/TimeGreeting";
 
 const ArrowUpRight = () => (
   <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -85,7 +86,7 @@ export default function Home() {
         <section className="hero" id="top">
           <div className="hero-copy" data-reveal="lift">
             <h1>
-              こんにちは。
+              <TimeGreeting />
               <br />
               <span>Riyoです。</span>
             </h1>
