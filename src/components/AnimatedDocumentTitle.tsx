@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-const title = "Riyo — Personal Website";
+const title = "riyo.me — Riyo";
 const separator = "  ✦  ";
 
 export default function AnimatedDocumentTitle() {

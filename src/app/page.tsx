@@ -18,52 +18,40 @@ const GitHubMark = () => (
 
 const places = [
   {
-    number: "01",
     name: "Apps",
     domain: "apps.riyo.me",
-    description: "つくったアプリを並べる、小さなストア。",
+    description: "作ったアプリを置いています。",
     href: "https://apps.riyo.me",
     tone: "peach",
-    world: "apps-world",
     image: "/portals/apps.webp",
-    signal: "ENTER THE STORE",
-    status: "OPEN",
+    note: "公開中",
   },
   {
-    number: "02",
     name: "Blog",
     domain: "blog.riyo.me",
-    description: "考えたこと、学んだことの記録。",
+    description: "たまに書いたもの。",
     href: "https://blog.riyo.me",
     tone: "cream",
-    world: "blog-world",
     image: "/portals/blog.webp",
-    signal: "WORDS IN MOTION",
-    status: "SOON",
+    note: "まだ準備中",
   },
   {
-    number: "03",
     name: "Lab",
     domain: "lab.riyo.me",
-    description: "途中でも出してみる、実験の置き場。",
+    description: "試しているものと、途中のもの。",
     href: "https://lab.riyo.me",
     tone: "violet",
-    world: "lab-world",
     image: "/portals/lab.webp",
-    signal: "UNKNOWN AHEAD",
-    status: "SOON",
+    note: "まだ準備中",
   },
   {
-    number: "04",
     name: "Scripts",
     domain: "scripts.riyo.me",
-    description: "日々の面倒を、少しだけ短くする道具。",
+    description: "自分用に作った小さな道具。",
     href: "https://scripts.riyo.me",
     tone: "navy",
-    world: "scripts-world",
     image: "/portals/scripts.webp",
-    signal: "AUTOMATE A LITTLE",
-    status: "SOON",
+    note: "まだ準備中",
   },
 ];
 
@@ -80,7 +68,7 @@ export default function Home() {
           riyo.me
         </a>
         <nav aria-label="メインナビゲーション">
-          <a href="#places">Places</a>
+          <a href="#places">作ったもの</a>
           <a
             className="github-link"
             href="https://github.com/Riyoway"
@@ -96,31 +84,23 @@ export default function Home() {
       <main id="main">
         <section className="hero" id="top">
           <div className="hero-copy">
-            <p className="eyebrow">
-              <span>HELLO, I&apos;M RIYO</span>
-              <span className="eyebrow-line" aria-hidden="true" />
-            </p>
             <h1>
-              Making small things
+              こんにちは。
               <br />
-              <span>with a little spark.</span>
+              <span>Riyoです。</span>
             </h1>
             <p className="intro">
-              つくる、試す、そして公開する。
+              気になったものを作ったり、コードを書いたりしています。
               <br />
-              ここはRiyoのウェブ上の拠点です。
+              ここには、そのへんで出来たものを置いています。
             </p>
             <a className="primary-link" href="#places">
-              Explore my places
-              <ArrowUpRight />
+              下を見る
+              <span aria-hidden="true">↓</span>
             </a>
           </div>
 
           <div className="portrait-wrap" aria-label="Riyoのイラスト">
-            <div className="orbit orbit-one" aria-hidden="true" />
-            <div className="orbit orbit-two" aria-hidden="true" />
-            <div className="spark spark-one" aria-hidden="true" />
-            <div className="spark spark-two" aria-hidden="true" />
             <div className="portrait">
               <Image
                 src="/riyo-icon.png"
@@ -131,63 +111,49 @@ export default function Home() {
                 sizes="(max-width: 720px) 78vw, 520px"
               />
             </div>
-            <p className="portrait-note">curious by default</p>
+            <p className="portrait-note">だいたいこんな感じ</p>
           </div>
         </section>
 
         <section className="places-section" id="places">
           <div className="section-heading">
-            <p className="eyebrow">PLACES ON THE INTERNET</p>
-            <h2>Pick a door.</h2>
-            <p>それぞれの場所に、それぞれのつくりかけ。</p>
+            <h2>置いてあるもの</h2>
+            <p>入口を押すと、それぞれの場所へ行けます。</p>
           </div>
 
-          <div className="places-grid">
-            {places.map((place) => (
+          <div className="portal-field">
+            <span className="portal-path" aria-hidden="true" />
+            {places.map((place, index) => (
               <a
-                className={`place-card ${place.tone}`}
+                className={`portal-entry ${place.tone}`}
                 href={place.href}
                 key={place.domain}
                 target="_blank"
                 rel="noreferrer"
-                aria-label={`${place.name}: ${place.description}（${place.status === "SOON" ? "準備中" : "公開中"}）`}
+                aria-label={`${place.name}: ${place.description}（${place.note}）`}
               >
-                <div className="card-topline">
-                  <span className="card-number">{place.number}</span>
-                  <span className={`status ${place.status.toLowerCase()}`}>
-                    <span aria-hidden="true" />
-                    {place.status}
+                <span className="portal-wrap" aria-hidden="true">
+                  <span className="portal-shadow" />
+                  <span className="portal-frame">
+                    <Image
+                      className="portal-art"
+                      src={place.image}
+                      alt=""
+                      width={1200}
+                      height={1200}
+                      sizes="(max-width: 680px) 68vw, 260px"
+                    />
                   </span>
-                </div>
-
-                <div className="portal-scene" aria-hidden="true">
-                  <span className="portal-orbit portal-orbit-outer" />
-                  <span className="portal-orbit portal-orbit-inner" />
-                  <span className="portal-gate">
-                    <span className={`portal-world ${place.world}`}>
-                      <Image
-                        className="portal-art"
-                        src={place.image}
-                        alt=""
-                        width={1200}
-                        height={1200}
-                        sizes="(max-width: 680px) 55vw, 270px"
-                      />
-                    </span>
-                  </span>
-                  <span className="portal-signal">{place.signal}</span>
-                </div>
-
-                <div className="card-body">
+                  <span className="portal-mark">{index + 1}</span>
+                </span>
+                <span className="portal-copy">
                   <h3>{place.name}</h3>
                   <p>{place.description}</p>
-                </div>
-                <div className="card-footer">
-                  <span>{place.domain}</span>
-                  <span className="arrow-box">
+                  <span className="portal-meta">
+                    {place.note} · {place.domain}
                     <ArrowUpRight />
                   </span>
-                </div>
+                </span>
               </a>
             ))}
           </div>
@@ -196,7 +162,7 @@ export default function Home() {
 
       <footer>
         <p>© {new Date().getFullYear()} Riyo</p>
-        <p>Built somewhere between curiosity and coffee.</p>
+        <p>見に来てくれてありがとう。</p>
       </footer>
     </>
   );

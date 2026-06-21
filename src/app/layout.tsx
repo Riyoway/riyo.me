@@ -5,17 +5,16 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://riyo.me"),
   title: {
-    default: "Riyo — Personal Website",
+    default: "riyo.me — Riyo",
     template: "%s — Riyo",
   },
-  description:
-    "Riyoの個人ウェブサイト。つくったもの、実験、文章、便利なスクリプトへの入口です。",
+  description: "Riyoの個人サイト。作ったものを置いています。",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Riyo — Personal Website",
-    description: "つくる、試す、そして公開する。Riyoのウェブ上の拠点。",
+    title: "riyo.me — Riyo",
+    description: "Riyoの個人サイト。作ったものを置いています。",
     url: "https://riyo.me",
     siteName: "Riyo",
     locale: "ja_JP",
@@ -31,8 +30,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Riyo — Personal Website",
-    description: "つくる、試す、そして公開する。Riyoのウェブ上の拠点。",
+    title: "riyo.me — Riyo",
+    description: "Riyoの個人サイト。作ったものを置いています。",
     images: ["/riyo-icon.png"],
   },
 };
