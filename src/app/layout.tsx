@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import AnimatedDocumentTitle from "@/components/AnimatedDocumentTitle";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -49,7 +50,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body>
+        <AnimatedDocumentTitle />
+        {children}
+      </body>
     </html>
   );
 }

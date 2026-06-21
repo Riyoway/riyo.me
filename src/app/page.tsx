@@ -100,22 +100,10 @@ export default function Home() {
               <span>HELLO, I&apos;M RIYO</span>
               <span className="eyebrow-line" aria-hidden="true" />
             </p>
-            <h1
-              className="title-marquee"
-              aria-label="Making small things with a little spark."
-            >
-              <span className="title-marquee-track" aria-hidden="true">
-                <span className="title-marquee-group">
-                  <span>Making small things</span>
-                  <span className="title-spark">with a little spark.</span>
-                  <span className="title-star" />
-                </span>
-                <span className="title-marquee-group">
-                  <span>Making small things</span>
-                  <span className="title-spark">with a little spark.</span>
-                  <span className="title-star" />
-                </span>
-              </span>
+            <h1>
+              Making small things
+              <br />
+              <span>with a little spark.</span>
             </h1>
             <p className="intro">
               つくる、試す、そして公開する。
