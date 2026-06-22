@@ -136,7 +136,7 @@ export default function Home() {
               aria-hidden="true"
               data-reveal="path"
             />
-            {places.map((place, index) => (
+            {places.map((place) => (
               <a
                 className={`portal-entry ${place.tone}`}
                 href={place.href}
@@ -148,17 +148,28 @@ export default function Home() {
               >
                 <span className="portal-wrap" aria-hidden="true">
                   <span className="portal-shadow" />
+                  <span className="portal-aura" />
+                  <span className="portal-ring portal-ring-one" />
+                  <span className="portal-ring portal-ring-two" />
                   <span className="portal-frame">
-                    <Image
-                      className="portal-art"
-                      src={place.image}
-                      alt=""
-                      width={1200}
-                      height={1200}
-                      sizes="(max-width: 680px) 68vw, 260px"
-                    />
+                    <span className="portal-window">
+                      <Image
+                        className="portal-art"
+                        src={place.image}
+                        alt=""
+                        width={1200}
+                        height={1200}
+                        sizes="(max-width: 680px) 68vw, 260px"
+                      />
+                    </span>
                   </span>
-                  <span className="portal-mark">{index + 1}</span>
+                  <span className="portal-particles">
+                    <i />
+                    <i />
+                    <i />
+                    <i />
+                    <i />
+                  </span>
                 </span>
                 <span className="portal-copy">
                   <h3>{place.name}</h3>
