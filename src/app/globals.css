@@ -14,9 +14,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
+  width: 100%;
+  overflow-x: clip;
   margin: 0;
   color: var(--ink);
   background: var(--paper);
@@ -736,15 +739,17 @@ a:focus-visible {
   .portal-entry:nth-of-type(2),
   .portal-entry:nth-of-type(3),
   .portal-entry:nth-of-type(4) {
+    width: min(100%, 340px);
     margin-top: 0;
+    transform: none;
   }
 
   .portal-entry:nth-of-type(even) {
-    transform: translateX(5%);
+    justify-self: end;
   }
 
   .portal-entry:nth-of-type(odd) {
-    transform: translateX(-5%);
+    justify-self: start;
   }
 
   .portal-wrap {
