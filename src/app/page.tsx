@@ -148,10 +148,8 @@ export default function Home() {
               >
                 <span className="portal-wrap" aria-hidden="true">
                   <span className="portal-shadow" />
-                  <span className="portal-aura" />
-                  <span className="portal-ring portal-ring-one" />
-                  <span className="portal-ring portal-ring-two" />
-                  <span className="portal-frame">
+                  <span className="portal-breach">
+                    <span className="portal-depth" />
                     <span className="portal-window">
                       <Image
                         className="portal-art"
@@ -161,14 +159,52 @@ export default function Home() {
                         height={1200}
                         sizes="(max-width: 680px) 68vw, 260px"
                       />
+                      <span className="portal-distance" />
                     </span>
-                  </span>
-                  <span className="portal-particles">
-                    <i />
-                    <i />
-                    <i />
-                    <i />
-                    <i />
+                    <svg
+                      className="portal-fracture"
+                      viewBox="0 0 300 390"
+                      preserveAspectRatio="none"
+                    >
+                      <g className="fracture-lines">
+                        <path d="M73 80 44 54 24 20" />
+                        <path d="m78 103-41-4-28 13" />
+                        <path d="m67 143-34 21-20 35" />
+                        <path d="m64 215-39 14-17 29" />
+                        <path d="m78 282-37 24-17 48" />
+                        <path d="m112 324-12 35-25 24" />
+                        <path d="m163 337 8 30-9 21" />
+                        <path d="m208 313 28 30 8 39" />
+                        <path d="m239 257 34 8 20 30" />
+                        <path d="m238 197 37-18 18-31" />
+                        <path d="m235 130 35-17 21-37" />
+                        <path d="m213 78 20-34 25-23" />
+                        <path d="m157 58 5-31-11-23" />
+                        <path d="m105 61-9-34 7-25" />
+                      </g>
+                      <g className="fracture-shards">
+                        <path d="m69 78 32-25 20 7-10 43-33 13Z" />
+                        <path d="m104 57 43-17 22 20-12 34-46 9Z" />
+                        <path d="m165 59 38-19 26 29-14 38-42-12Z" />
+                        <path d="m214 90 39 23 4 34-29 20-20-35Z" />
+                        <path d="m232 151 42 25-7 43-35 9-19-34Z" />
+                        <path d="m231 215 37 25-17 45-38-8-9-39Z" />
+                        <path d="m210 274 30 31-25 35-39-19 5-40Z" />
+                        <path d="m174 317-25 38-39-20 10-40 38 4Z" />
+                        <path d="m119 300-13 39-42-23 7-42 39-8Z" />
+                        <path d="m73 268-38-22 7-45 36-8 20 36Z" />
+                        <path d="m65 198-36-28 15-39 37 5 15 40Z" />
+                        <path d="m73 137-34-27 23-38 35 17-2 35Z" />
+                        <path d="m91 109 25-11-5 31-21 18-14-21Z" />
+                        <path d="m205 105 24 12-17 30-23-13Z" />
+                        <path d="m222 243 24 7-20 25-25-3Z" />
+                        <path d="m107 292 21 8-16 27-23-12Z" />
+                      </g>
+                    </svg>
+                    <span className="portal-enter">
+                      タップで入る
+                      <ArrowUpRight />
+                    </span>
                   </span>
                 </span>
                 <span className="portal-copy">
