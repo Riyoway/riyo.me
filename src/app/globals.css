@@ -347,6 +347,10 @@ h1 {
 }
 
 .fracture-a {
+  --depth-x: 8px;
+  --depth-y: 10px;
+  --depth-mid-x: 4px;
+  --depth-mid-y: 5px;
   --portal-clip: polygon(
     12% 28%, 20% 26%, 24% 20%, 31% 24%, 39% 18%, 48% 22%, 55% 13%,
     62% 23%, 70% 18%, 76% 24%, 87% 26%, 84% 36%, 93% 42%, 86% 50%,
@@ -357,6 +361,10 @@ h1 {
 }
 
 .fracture-b {
+  --depth-x: -7px;
+  --depth-y: 10px;
+  --depth-mid-x: -3px;
+  --depth-mid-y: 5px;
   --portal-clip: polygon(
     8% 35%, 18% 28%, 26% 30%, 29% 21%, 38% 27%, 45% 19%, 53% 24%,
     60% 16%, 66% 25%, 78% 22%, 82% 32%, 92% 35%, 87% 45%, 95% 52%,
@@ -367,6 +375,10 @@ h1 {
 }
 
 .fracture-c {
+  --depth-x: 9px;
+  --depth-y: 7px;
+  --depth-mid-x: 4px;
+  --depth-mid-y: 3px;
   --portal-clip: polygon(
     11% 25%, 22% 27%, 27% 19%, 35% 23%, 42% 14%, 49% 22%, 58% 19%,
     64% 28%, 76% 23%, 78% 33%, 89% 39%, 84% 48%, 93% 57%, 83% 61%,
@@ -376,6 +388,10 @@ h1 {
 }
 
 .fracture-d {
+  --depth-x: -6px;
+  --depth-y: 9px;
+  --depth-mid-x: -3px;
+  --depth-mid-y: 4px;
   --portal-clip: polygon(
     9% 32%, 18% 30%, 22% 22%, 32% 28%, 37% 18%, 46% 24%, 53% 15%,
     59% 25%, 69% 21%, 74% 30%, 86% 28%, 83% 40%, 94% 46%, 87% 55%,
@@ -416,24 +432,65 @@ h1 {
 }
 
 .portal-depth,
+.portal-depth-mid,
 .portal-window {
   position: absolute;
   inset: 0;
   clip-path: var(--portal-clip);
+  transform-origin: center;
 }
 
 .portal-depth {
   z-index: 0;
-  background: #3a312e;
-  filter: drop-shadow(0 3px 2px rgba(38, 31, 35, 0.16));
-  transform: scale(1.019);
+  background:
+    radial-gradient(circle at 38% 28%, #6f594c 0 15%, transparent 42%),
+    linear-gradient(145deg, #2b2525 0%, #151419 62%, #0c0c10 100%);
+  filter: drop-shadow(0 7px 6px rgba(38, 31, 35, 0.26));
+  transform: scale(1.025);
+}
+
+.portal-depth::after {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      113deg,
+      transparent 0 9px,
+      rgba(255, 255, 255, 0.035) 10px,
+      transparent 12px 19px
+    );
+  content: "";
+  opacity: 0.7;
+}
+
+.portal-depth-mid {
+  z-index: 1;
+  background:
+    linear-gradient(
+      145deg,
+      #c2aa8d 0%,
+      #9b7e68 21%,
+      #72594e 48%,
+      #493a39 72%,
+      #27232a 100%
+    );
+  box-shadow:
+    inset 5px 6px 5px rgba(255, 244, 222, 0.16),
+    inset -7px -9px 8px rgba(18, 16, 21, 0.42);
+  transform: translate(var(--depth-mid-x), var(--depth-mid-y)) scale(0.975);
 }
 
 .portal-window {
-  z-index: 1;
+  z-index: 2;
   overflow: hidden;
   background: #292635;
-  box-shadow: inset 0 0 18px rgba(24, 21, 29, 0.44);
+  box-shadow:
+    0 0 0 1px rgba(19, 17, 21, 0.62),
+    inset 0 0 24px rgba(16, 14, 20, 0.62);
+  transform: translate(var(--depth-x), var(--depth-y)) scale(0.94);
+  transition:
+    box-shadow 280ms ease,
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .portal-art {
@@ -461,7 +518,7 @@ h1 {
 .portal-fracture {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 3;
   display: block;
   width: 100%;
   height: 100%;
@@ -533,11 +590,23 @@ h1 {
   vector-effect: non-scaling-stroke;
 }
 
+.fracture-inner-rim {
+  fill: none;
+  stroke: rgba(27, 23, 26, 0.72);
+  stroke-linecap: butt;
+  stroke-linejoin: bevel;
+  stroke-width: 1.4;
+  transform: translate(var(--depth-x), var(--depth-y)) scale(0.94);
+  transform-box: fill-box;
+  transform-origin: center;
+  vector-effect: non-scaling-stroke;
+}
+
 .portal-enter {
   position: absolute;
   bottom: 24%;
   left: 50%;
-  z-index: 4;
+  z-index: 5;
   display: block;
   padding: 5px 10px;
   border: 1px solid rgba(245, 239, 230, 0.62);
@@ -606,6 +675,14 @@ h1 {
 .portal-entry:hover .portal-art,
 .portal-entry:focus-visible .portal-art {
   transform: scale(1.15);
+}
+
+.portal-entry:hover .portal-window,
+.portal-entry:focus-visible .portal-window {
+  box-shadow:
+    0 0 0 1px rgba(19, 17, 21, 0.72),
+    inset 0 0 28px rgba(16, 14, 20, 0.68);
+  transform: translate(var(--depth-x), var(--depth-y)) scale(0.925);
 }
 
 .portal-entry:hover .fracture-rim,

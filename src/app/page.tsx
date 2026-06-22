@@ -348,6 +348,7 @@ export default function Home() {
                 <span className="portal-wrap" aria-hidden="true">
                   <span className="portal-breach">
                     <span className="portal-depth" />
+                    <span className="portal-depth-mid" />
                     <span className="portal-window">
                       <Image
                         className="portal-art"
@@ -393,6 +394,10 @@ export default function Home() {
                       />
                       <path
                         className="fracture-rim-highlight"
+                        d={fracture.rim}
+                      />
+                      <path
+                        className="fracture-inner-rim"
                         d={fracture.rim}
                       />
                       <g className="fracture-lines fracture-primary">
