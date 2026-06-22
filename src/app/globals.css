@@ -325,7 +325,6 @@ h1 {
 
 .portal-entry {
   --portal-tint: rgba(237, 146, 85, 0.14);
-  --portal-shadow-color: rgba(91, 57, 50, 0.24);
   display: flex;
   min-width: 0;
   flex-direction: column;
@@ -337,17 +336,14 @@ h1 {
 
 .portal-entry.cream {
   --portal-tint: rgba(233, 199, 130, 0.13);
-  --portal-shadow-color: rgba(117, 94, 52, 0.22);
 }
 
 .portal-entry.violet {
   --portal-tint: rgba(143, 134, 207, 0.14);
-  --portal-shadow-color: rgba(57, 51, 96, 0.24);
 }
 
 .portal-entry.navy {
   --portal-tint: rgba(121, 127, 174, 0.15);
-  --portal-shadow-color: rgba(43, 47, 79, 0.25);
 }
 
 .portal-entry:nth-of-type(2),
@@ -363,85 +359,74 @@ h1 {
   position: relative;
   display: grid;
   width: 100%;
-  max-width: 278px;
-  aspect-ratio: 0.77;
+  max-width: 320px;
+  aspect-ratio: 1.36;
   margin-bottom: 26px;
   place-items: center;
   isolation: isolate;
-}
-
-.portal-shadow {
-  position: absolute;
-  right: 8%;
-  bottom: 1%;
-  z-index: -2;
-  width: 75%;
-  height: 12%;
-  border-radius: 50%;
-  background: var(--portal-shadow-color);
-  filter: blur(15px);
-  opacity: 0.78;
-  transform: rotate(-4deg) scaleX(0.88);
-  transition:
-    opacity 220ms ease,
-    transform 280ms ease;
 }
 
 .portal-breach {
   position: absolute;
   inset: 0;
   display: block;
-  transform: rotate(-1.8deg);
-  transition:
-    filter 280ms ease,
-    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform: rotate(-1deg);
 }
 
 .portal-entry:nth-of-type(even) .portal-breach {
-  transform: rotate(2.2deg);
+  transform: rotate(1.4deg);
 }
 
 .portal-depth,
 .portal-window {
   position: absolute;
-  inset: 8% 9% 7%;
+  inset: 0;
   clip-path: polygon(
-    25% 7%,
-    39% 11%,
-    49% 3%,
-    61% 11%,
-    76% 8%,
-    82% 21%,
-    94% 29%,
-    88% 43%,
-    97% 56%,
-    87% 69%,
-    83% 84%,
-    67% 83%,
-    54% 97%,
-    41% 88%,
-    25% 93%,
-    20% 78%,
-    6% 69%,
-    12% 53%,
-    4% 40%,
-    17% 30%,
-    15% 15%
+    12% 28%,
+    20% 26%,
+    24% 20%,
+    31% 24%,
+    39% 18%,
+    48% 22%,
+    55% 13%,
+    62% 23%,
+    70% 18%,
+    76% 24%,
+    87% 26%,
+    84% 36%,
+    93% 42%,
+    86% 50%,
+    91% 59%,
+    80% 60%,
+    77% 70%,
+    66% 67%,
+    60% 76%,
+    52% 70%,
+    44% 80%,
+    37% 69%,
+    25% 72%,
+    23% 62%,
+    12% 60%,
+    16% 51%,
+    8% 44%,
+    16% 38%,
+    8% 37%,
+    16% 28%
   );
 }
 
 .portal-depth {
   z-index: 0;
-  background: #1d1a25;
-  filter: blur(0.3px) drop-shadow(8px 11px 8px rgba(38, 31, 35, 0.34));
-  transform: translate(8px, 10px) scale(0.99);
+  background: #3a312e;
+  filter: drop-shadow(0 4px 3px rgba(38, 31, 35, 0.18));
+  transform: scale(1.026);
 }
 
 .portal-window {
   z-index: 1;
   overflow: hidden;
   background: #292635;
-  box-shadow: inset 0 0 28px rgba(24, 21, 29, 0.55);
+  box-shadow: inset 0 0 18px rgba(24, 21, 29, 0.44);
 }
 
 .portal-art {
@@ -480,35 +465,23 @@ h1 {
 
 .fracture-lines {
   fill: none;
-  stroke: rgba(41, 39, 51, 0.64);
-  stroke-width: 2.1;
-  vector-effect: non-scaling-stroke;
-}
-
-.fracture-shards {
-  filter: drop-shadow(2px 5px 3px rgba(64, 51, 52, 0.2));
-  transform-origin: center;
-  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.fracture-shards path {
-  fill: var(--paper);
-  stroke: rgba(41, 39, 51, 0.7);
+  stroke: rgba(41, 39, 51, 0.74);
   stroke-width: 1.8;
   vector-effect: non-scaling-stroke;
 }
 
-.fracture-shards path:nth-child(3n + 2) {
-  fill: #eee5da;
-}
-
-.fracture-shards path:nth-child(3n) {
-  fill: var(--paper-deep);
+.fracture-rim {
+  fill: none;
+  stroke: rgba(58, 49, 46, 0.9);
+  stroke-linecap: butt;
+  stroke-linejoin: bevel;
+  stroke-width: 6;
+  vector-effect: non-scaling-stroke;
 }
 
 .portal-enter {
   position: absolute;
-  bottom: 14%;
+  bottom: 24%;
   left: 50%;
   z-index: 4;
   display: block;
@@ -573,8 +546,7 @@ h1 {
 
 .portal-entry:hover .portal-breach,
 .portal-entry:focus-visible .portal-breach {
-  filter: drop-shadow(0 9px 9px var(--portal-shadow-color));
-  transform: translateY(-5px) rotate(0) scale(1.025);
+  filter: saturate(1.06);
 }
 
 .portal-entry:hover .portal-art,
@@ -582,15 +554,9 @@ h1 {
   transform: scale(1.15);
 }
 
-.portal-entry:hover .portal-shadow,
-.portal-entry:focus-visible .portal-shadow {
-  opacity: 0.95;
-  transform: rotate(-2deg) scaleX(1);
-}
-
-.portal-entry:hover .fracture-shards,
-.portal-entry:focus-visible .fracture-shards {
-  transform: scale(1.018);
+.portal-entry:hover .fracture-rim,
+.portal-entry:focus-visible .fracture-rim {
+  stroke: rgba(43, 36, 35, 1);
 }
 
 .portal-entry:hover .portal-enter,
@@ -600,7 +566,7 @@ h1 {
 }
 
 .portal-entry:active .portal-breach {
-  transform: translateY(1px) rotate(0) scale(0.985);
+  filter: brightness(0.94);
 }
 
 @media (hover: none) {
@@ -889,7 +855,7 @@ a:focus-visible {
   }
 
   .portal-wrap {
-    max-width: 260px;
+    max-width: min(100%, 320px);
   }
 
   .portal-path {

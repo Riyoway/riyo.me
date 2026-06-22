@@ -147,7 +147,6 @@ export default function Home() {
                 data-reveal="portal"
               >
                 <span className="portal-wrap" aria-hidden="true">
-                  <span className="portal-shadow" />
                   <span className="portal-breach">
                     <span className="portal-depth" />
                     <span className="portal-window">
@@ -157,48 +156,34 @@ export default function Home() {
                         alt=""
                         width={1200}
                         height={1200}
-                        sizes="(max-width: 680px) 68vw, 260px"
+                        sizes="(max-width: 680px) 82vw, 300px"
                       />
                       <span className="portal-distance" />
                     </span>
                     <svg
                       className="portal-fracture"
-                      viewBox="0 0 300 390"
+                      viewBox="0 0 320 260"
                       preserveAspectRatio="none"
                     >
+                      <path
+                        className="fracture-rim"
+                        d="M38 73 64 68 77 52 99 63 125 47 154 56 176 35 198 59 224 47 243 63 278 68 269 94 298 108 275 129 291 153 256 157 246 181 211 174 192 198 166 183 141 207 118 178 80 186 74 162 38 155 51 132 26 115 51 99Z"
+                      />
                       <g className="fracture-lines">
-                        <path d="M73 80 44 54 24 20" />
-                        <path d="m78 103-41-4-28 13" />
-                        <path d="m67 143-34 21-20 35" />
-                        <path d="m64 215-39 14-17 29" />
-                        <path d="m78 282-37 24-17 48" />
-                        <path d="m112 324-12 35-25 24" />
-                        <path d="m163 337 8 30-9 21" />
-                        <path d="m208 313 28 30 8 39" />
-                        <path d="m239 257 34 8 20 30" />
-                        <path d="m238 197 37-18 18-31" />
-                        <path d="m235 130 35-17 21-37" />
-                        <path d="m213 78 20-34 25-23" />
-                        <path d="m157 58 5-31-11-23" />
-                        <path d="m105 61-9-34 7-25" />
-                      </g>
-                      <g className="fracture-shards">
-                        <path d="m69 78 32-25 20 7-10 43-33 13Z" />
-                        <path d="m104 57 43-17 22 20-12 34-46 9Z" />
-                        <path d="m165 59 38-19 26 29-14 38-42-12Z" />
-                        <path d="m214 90 39 23 4 34-29 20-20-35Z" />
-                        <path d="m232 151 42 25-7 43-35 9-19-34Z" />
-                        <path d="m231 215 37 25-17 45-38-8-9-39Z" />
-                        <path d="m210 274 30 31-25 35-39-19 5-40Z" />
-                        <path d="m174 317-25 38-39-20 10-40 38 4Z" />
-                        <path d="m119 300-13 39-42-23 7-42 39-8Z" />
-                        <path d="m73 268-38-22 7-45 36-8 20 36Z" />
-                        <path d="m65 198-36-28 15-39 37 5 15 40Z" />
-                        <path d="m73 137-34-27 23-38 35 17-2 35Z" />
-                        <path d="m91 109 25-11-5 31-21 18-14-21Z" />
-                        <path d="m205 105 24 12-17 30-23-13Z" />
-                        <path d="m222 243 24 7-20 25-25-3Z" />
-                        <path d="m107 292 21 8-16 27-23-12Z" />
+                        <path d="M38 73 25 51 8 41M25 51 29 32" />
+                        <path d="M77 52 69 28 78 10M69 28 54 20" />
+                        <path d="M125 47 119 22 105 7" />
+                        <path d="M176 35 181 15 198 2" />
+                        <path d="M224 47 238 25 260 16M238 25 235 8" />
+                        <path d="M278 68 297 56 317 61M297 56 305 40" />
+                        <path d="M298 108 314 101" />
+                        <path d="M291 153 309 164 319 183M309 164 316 151" />
+                        <path d="M246 181 258 207 278 223M258 207 277 202" />
+                        <path d="M192 198 198 222 191 246" />
+                        <path d="M141 207 132 232 113 252M132 232 145 244" />
+                        <path d="M80 186 65 213 43 225M65 213 48 207" />
+                        <path d="M38 155 18 169 4 190M18 169 7 159" />
+                        <path d="M26 115 8 111 0 94" />
                       </g>
                     </svg>
                     <span className="portal-enter">
