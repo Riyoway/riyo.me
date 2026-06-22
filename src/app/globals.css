@@ -325,6 +325,14 @@ h1 {
 
 .portal-entry {
   --portal-tint: rgba(237, 146, 85, 0.14);
+  --light-x: 44%;
+  --light-y: 28%;
+  --scene-x: 0px;
+  --scene-y: 0px;
+  --view-mid-x: 0px;
+  --view-mid-y: 0px;
+  --view-window-x: 0px;
+  --view-window-y: 0px;
   display: flex;
   min-width: 0;
   flex-direction: column;
@@ -431,6 +439,15 @@ h1 {
   transform: rotate(1.4deg);
 }
 
+.portal-tunnel {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  clip-path: var(--portal-clip);
+  contain: paint;
+}
+
 .portal-depth,
 .portal-depth-mid,
 .portal-window {
@@ -438,12 +455,18 @@ h1 {
   inset: 0;
   clip-path: var(--portal-clip);
   transform-origin: center;
+  will-change: transform;
 }
 
 .portal-depth {
   z-index: 0;
   background:
-    radial-gradient(circle at 38% 28%, #6f594c 0 15%, transparent 42%),
+    radial-gradient(
+      circle at var(--light-x) var(--light-y),
+      #806957 0 11%,
+      #655044 25%,
+      transparent 48%
+    ),
     linear-gradient(145deg, #2b2525 0%, #151419 62%, #0c0c10 100%);
   filter: drop-shadow(0 7px 6px rgba(38, 31, 35, 0.26));
   transform: scale(1.025);
@@ -466,6 +489,12 @@ h1 {
 .portal-depth-mid {
   z-index: 1;
   background:
+    radial-gradient(
+      circle at var(--light-x) var(--light-y),
+      rgba(250, 225, 190, 0.34) 0 5%,
+      rgba(213, 177, 139, 0.16) 20%,
+      transparent 46%
+    ),
     linear-gradient(
       145deg,
       #c2aa8d 0%,
@@ -477,7 +506,12 @@ h1 {
   box-shadow:
     inset 5px 6px 5px rgba(255, 244, 222, 0.16),
     inset -7px -9px 8px rgba(18, 16, 21, 0.42);
-  transform: translate(var(--depth-mid-x), var(--depth-mid-y)) scale(0.975);
+  transform:
+    translate(
+      calc(var(--depth-mid-x) + var(--view-mid-x)),
+      calc(var(--depth-mid-y) + var(--view-mid-y))
+    )
+    scale(0.975);
 }
 
 .portal-window {
@@ -487,10 +521,14 @@ h1 {
   box-shadow:
     0 0 0 1px rgba(19, 17, 21, 0.62),
     inset 0 0 24px rgba(16, 14, 20, 0.62);
-  transform: translate(var(--depth-x), var(--depth-y)) scale(0.94);
+  transform:
+    translate(
+      calc(var(--depth-x) + var(--view-window-x)),
+      calc(var(--depth-y) + var(--view-window-y))
+    )
+    scale(0.94);
   transition:
-    box-shadow 280ms ease,
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow 280ms ease;
 }
 
 .portal-art {
@@ -498,8 +536,10 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.08);
-  transition: transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translate3d(var(--scene-x), var(--scene-y), 0) scale(1.16);
+  transform-origin: center;
+  transition: filter 280ms ease;
+  will-change: transform;
 }
 
 .portal-distance {
@@ -596,7 +636,12 @@ h1 {
   stroke-linecap: butt;
   stroke-linejoin: bevel;
   stroke-width: 1.4;
-  transform: translate(var(--depth-x), var(--depth-y)) scale(0.94);
+  transform:
+    translate(
+      calc(var(--depth-x) + var(--view-window-x)),
+      calc(var(--depth-y) + var(--view-window-y))
+    )
+    scale(0.94);
   transform-box: fill-box;
   transform-origin: center;
   vector-effect: non-scaling-stroke;
@@ -674,7 +719,7 @@ h1 {
 
 .portal-entry:hover .portal-art,
 .portal-entry:focus-visible .portal-art {
-  transform: scale(1.15);
+  filter: saturate(1.08) brightness(1.03);
 }
 
 .portal-entry:hover .portal-window,
@@ -682,7 +727,12 @@ h1 {
   box-shadow:
     0 0 0 1px rgba(19, 17, 21, 0.72),
     inset 0 0 28px rgba(16, 14, 20, 0.68);
-  transform: translate(var(--depth-x), var(--depth-y)) scale(0.925);
+  transform:
+    translate(
+      calc(var(--depth-x) + var(--view-window-x)),
+      calc(var(--depth-y) + var(--view-window-y))
+    )
+    scale(0.925);
 }
 
 .portal-entry:hover .fracture-rim,
@@ -704,6 +754,15 @@ h1 {
   .portal-enter {
     opacity: 0.82;
     transform: translate(-50%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-depth-mid,
+  .portal-window,
+  .portal-art,
+  .fracture-inner-rim {
+    will-change: auto;
   }
 }
 

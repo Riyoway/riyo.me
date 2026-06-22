@@ -343,22 +343,25 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`${place.name}: ${place.description}（${place.note}）`}
+                data-portal-parallax
                 data-reveal="portal"
               >
                 <span className="portal-wrap" aria-hidden="true">
                   <span className="portal-breach">
-                    <span className="portal-depth" />
-                    <span className="portal-depth-mid" />
-                    <span className="portal-window">
-                      <Image
-                        className="portal-art"
-                        src={place.image}
-                        alt=""
-                        width={1200}
-                        height={1200}
-                        sizes="(max-width: 680px) 82vw, 300px"
-                      />
-                      <span className="portal-distance" />
+                    <span className="portal-tunnel">
+                      <span className="portal-depth" />
+                      <span className="portal-depth-mid" />
+                      <span className="portal-window">
+                        <Image
+                          className="portal-art"
+                          src={place.image}
+                          alt=""
+                          width={1200}
+                          height={1200}
+                          sizes="(max-width: 680px) 82vw, 300px"
+                        />
+                        <span className="portal-distance" />
+                      </span>
                     </span>
                     <svg
                       className="portal-fracture"

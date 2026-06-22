@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import AnimatedDocumentTitle from "@/components/AnimatedDocumentTitle";
+import PortalPerspective from "@/components/PortalPerspective";
 import ScrollReveal from "@/components/ScrollReveal";
 import "./globals.css";
 
@@ -52,6 +53,7 @@ export default function RootLayout({
     <html lang="ja">
       <body>
         <AnimatedDocumentTitle />
+        <PortalPerspective />
         <ScrollReveal />
         {children}
       </body>
