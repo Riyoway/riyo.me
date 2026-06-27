@@ -62,8 +62,8 @@ body {
 }
 
 .crack-layer-top {
-  top: -9dvh;
-  height: calc(50dvh + 16dvh);
+  top: -16dvh;
+  height: calc(50dvh + 13dvh);
   background-image: url("/cracks/wall-crack-top-foreground.png");
   background-position: center bottom;
   transform:
@@ -77,8 +77,8 @@ body {
 }
 
 .crack-layer-bottom {
-  bottom: -9dvh;
-  height: calc(50dvh + 16dvh);
+  bottom: -16dvh;
+  height: calc(50dvh + 13dvh);
   background-image: url("/cracks/wall-crack-bottom-foreground.png");
   background-position: center top;
   transform:
@@ -99,13 +99,13 @@ body {
   }
 
   .crack-layer-top {
-    top: -8dvh;
-    height: calc(50dvh + 15dvh);
+    top: -14dvh;
+    height: calc(50dvh + 13dvh);
   }
 
   .crack-layer-bottom {
-    bottom: -8dvh;
-    height: calc(50dvh + 15dvh);
+    bottom: -14dvh;
+    height: calc(50dvh + 13dvh);
   }
 }
 
