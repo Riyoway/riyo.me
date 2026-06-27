@@ -17,6 +17,7 @@ body {
 .crack-stage {
   --mouse-x: 0;
   --mouse-y: 0;
+  --crack-angle: -2.6deg;
   position: relative;
   width: 100vw;
   height: 100dvh;
@@ -47,8 +48,8 @@ body {
 .portal-vfx {
   position: absolute;
   top: 37%;
-  right: -8vw;
-  left: -8vw;
+  right: -16vw;
+  left: -16vw;
   z-index: 1;
   height: 26%;
   overflow: hidden;
@@ -61,6 +62,7 @@ body {
       calc(var(--mouse-y) * -16px),
       0
     )
+    rotate(var(--crack-angle))
     scale(1.08);
   transform-origin: center;
   will-change: transform;
@@ -206,8 +208,8 @@ body {
 
 .crack-layer {
   position: absolute;
-  right: -8vw;
-  left: -8vw;
+  right: -16vw;
+  left: -16vw;
   z-index: 3;
   display: block;
   overflow: hidden;
@@ -232,6 +234,7 @@ body {
       calc(var(--mouse-y) * -12px),
       0
     )
+    rotate(var(--crack-angle))
     rotate(calc(var(--mouse-x) * -0.35deg))
     scale(1.035);
 }
@@ -247,6 +250,7 @@ body {
       calc(var(--mouse-y) * 10px),
       0
     )
+    rotate(var(--crack-angle))
     rotate(calc(var(--mouse-x) * 0.28deg))
     scale(1.035);
 }
@@ -254,14 +258,14 @@ body {
 @media (max-width: 700px) {
   .portal-vfx {
     top: 39%;
-    right: -28vw;
-    left: -28vw;
+    right: -38vw;
+    left: -38vw;
     height: 22%;
   }
 
   .crack-layer {
-    right: -28vw;
-    left: -28vw;
+    right: -38vw;
+    left: -38vw;
     background-size: 136% 118%;
   }
 
