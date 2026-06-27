@@ -119,7 +119,14 @@ export default function CrackPortalStage() {
       ref={stageRef}
       aria-label="割れ目の奥に水色の背景が見えるテスト画面"
     >
-      <div className="distant-world" aria-hidden="true" />
+      <div className="distant-world" aria-hidden="true">
+        <div className="star-field">
+          <span className="shooting-star shooting-star-one" />
+          <span className="shooting-star shooting-star-two" />
+          <span className="shooting-star shooting-star-three" />
+        </div>
+        <p className="coming-soon">Coming Soon</p>
+      </div>
       <div className="crack-layer crack-layer-top" aria-hidden="true" />
       <div className="crack-layer crack-layer-bottom" aria-hidden="true" />
     </main>
