@@ -18,8 +18,8 @@ body {
   --mouse-x: 0;
   --mouse-y: 0;
   --crack-angle: -2.6deg;
-  --top-open-shift: 24dvh;
-  --bottom-open-shift: -24dvh;
+  --top-open-shift: 7.5dvh;
+  --bottom-open-shift: -7.5dvh;
   --world-opacity: 0;
   position: relative;
   width: 100vw;
@@ -111,8 +111,8 @@ body {
 
 @media (max-width: 700px) {
   .crack-stage {
-    --top-open-shift: 20dvh;
-    --bottom-open-shift: -20dvh;
+    --top-open-shift: 6dvh;
+    --bottom-open-shift: -6dvh;
   }
 
   .crack-layer {
