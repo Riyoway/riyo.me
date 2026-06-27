@@ -44,6 +44,166 @@ body {
   will-change: transform;
 }
 
+.portal-vfx {
+  position: absolute;
+  top: 37%;
+  right: -8vw;
+  left: -8vw;
+  z-index: 1;
+  height: 26%;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transform:
+    translate3d(
+      calc(var(--mouse-x) * -26px),
+      calc(var(--mouse-y) * -16px),
+      0
+    )
+    scale(1.08);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.portal-vfx::before,
+.portal-vfx::after,
+.portal-glow,
+.portal-light,
+.portal-dust {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.portal-vfx::before {
+  inset: 15% -6%;
+  background:
+    radial-gradient(
+      ellipse at calc(50% + (var(--mouse-x) * 32%)) calc(50% + (var(--mouse-y) * 40%)),
+      rgba(255, 255, 255, 0.72) 0%,
+      rgba(189, 246, 255, 0.52) 13%,
+      rgba(82, 210, 255, 0.24) 34%,
+      transparent 68%
+    );
+  mix-blend-mode: screen;
+  opacity: 0.78;
+  content: "";
+  filter: blur(18px);
+  animation: portal-breathe 5.8s ease-in-out infinite;
+}
+
+.portal-vfx::after {
+  inset: 31% -12%;
+  background:
+    repeating-linear-gradient(
+      96deg,
+      transparent 0 24px,
+      rgba(255, 255, 255, 0.16) 25px 26px,
+      transparent 27px 70px
+    );
+  opacity: 0.26;
+  content: "";
+  filter: blur(0.4px);
+  transform:
+    translateX(calc(var(--mouse-x) * 36px))
+    skewX(-10deg);
+  animation: portal-rays 8.5s linear infinite;
+}
+
+.portal-glow {
+  inset: 20% 6%;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(230, 255, 255, 0.28) 24%,
+      rgba(255, 255, 255, 0.68) 50%,
+      rgba(176, 241, 255, 0.26) 74%,
+      transparent
+    );
+  opacity: 0.66;
+  filter: blur(12px);
+  transform:
+    translate3d(
+      calc(var(--mouse-x) * 44px),
+      calc(var(--mouse-y) * 9px),
+      0
+    );
+}
+
+.portal-light {
+  height: 1px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.92), transparent);
+  mix-blend-mode: screen;
+  opacity: 0.58;
+  filter: blur(0.45px);
+}
+
+.portal-light-one {
+  top: 41%;
+  left: 8%;
+  width: 82%;
+  transform:
+    translate3d(
+      calc(var(--mouse-x) * 62px),
+      calc(var(--mouse-y) * -7px),
+      0
+    )
+    rotate(-1.4deg);
+}
+
+.portal-light-two {
+  top: 58%;
+  left: 18%;
+  width: 54%;
+  opacity: 0.28;
+  transform:
+    translate3d(
+      calc(var(--mouse-x) * -46px),
+      calc(var(--mouse-y) * 10px),
+      0
+    )
+    rotate(1.2deg);
+}
+
+.portal-dust {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(244, 255, 255, 0.86);
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.76),
+    26px 9px 0 -1px rgba(228, 253, 255, 0.55),
+    64px -12px 0 -1.5px rgba(255, 255, 255, 0.42),
+    116px 18px 0 -1px rgba(207, 246, 255, 0.5),
+    178px -4px 0 -1.5px rgba(255, 255, 255, 0.38);
+  opacity: 0.52;
+  filter: blur(0.25px);
+}
+
+.portal-dust-one {
+  top: 34%;
+  left: 18%;
+  animation: dust-drift-one 11s ease-in-out infinite;
+}
+
+.portal-dust-two {
+  top: 54%;
+  left: 45%;
+  transform: scale(0.78);
+  animation: dust-drift-two 13.5s ease-in-out infinite;
+}
+
+.portal-dust-three {
+  top: 44%;
+  left: 71%;
+  transform: scale(0.64);
+  animation: dust-drift-three 10.2s ease-in-out infinite;
+}
+
 .crack-layer {
   position: absolute;
   right: -8vw;
@@ -92,6 +252,13 @@ body {
 }
 
 @media (max-width: 700px) {
+  .portal-vfx {
+    top: 39%;
+    right: -28vw;
+    left: -28vw;
+    height: 22%;
+  }
+
   .crack-layer {
     right: -28vw;
     left: -28vw;
@@ -111,8 +278,71 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .distant-world,
+  .portal-vfx,
+  .portal-vfx::before,
+  .portal-vfx::after,
+  .portal-glow,
+  .portal-light,
+  .portal-dust,
   .crack-layer {
+    animation: none;
     transform: none;
     will-change: auto;
+  }
+}
+
+@keyframes portal-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scaleX(0.96);
+  }
+
+  50% {
+    opacity: 0.86;
+    transform: scaleX(1.04);
+  }
+}
+
+@keyframes portal-rays {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 220px 0;
+  }
+}
+
+@keyframes dust-drift-one {
+  0%,
+  100% {
+    transform: translate3d(calc(var(--mouse-x) * 38px), calc(var(--mouse-y) * 18px), 0);
+  }
+
+  50% {
+    transform: translate3d(calc(14px + (var(--mouse-x) * 38px)), calc(-10px + (var(--mouse-y) * 18px)), 0);
+  }
+}
+
+@keyframes dust-drift-two {
+  0%,
+  100% {
+    transform: translate3d(calc(var(--mouse-x) * -30px), calc(var(--mouse-y) * 22px), 0) scale(0.78);
+  }
+
+  50% {
+    transform: translate3d(calc(-18px + (var(--mouse-x) * -30px)), calc(12px + (var(--mouse-y) * 22px)), 0) scale(0.78);
+  }
+}
+
+@keyframes dust-drift-three {
+  0%,
+  100% {
+    transform: translate3d(calc(var(--mouse-x) * 28px), calc(var(--mouse-y) * -16px), 0) scale(0.64);
+  }
+
+  50% {
+    transform: translate3d(calc(10px + (var(--mouse-x) * 28px)), calc(13px + (var(--mouse-y) * -16px)), 0) scale(0.64);
   }
 }

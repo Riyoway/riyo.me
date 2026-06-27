@@ -61,6 +61,14 @@ export default function CrackPortalStage() {
   return (
     <main className="crack-stage" ref={stageRef} aria-label="割れ目の奥に水色の背景が見えるテスト画面">
       <div className="distant-world" aria-hidden="true" />
+      <div className="portal-vfx" aria-hidden="true">
+        <span className="portal-glow" />
+        <span className="portal-light portal-light-one" />
+        <span className="portal-light portal-light-two" />
+        <span className="portal-dust portal-dust-one" />
+        <span className="portal-dust portal-dust-two" />
+        <span className="portal-dust portal-dust-three" />
+      </div>
       <div className="crack-layer crack-layer-top" aria-hidden="true" />
       <div className="crack-layer crack-layer-bottom" aria-hidden="true" />
     </main>
