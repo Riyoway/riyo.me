@@ -3,11 +3,116 @@
 }
 
 html {
-  background: #000;
+  overflow: hidden;
+  background: #72d9ff;
 }
 
 body {
   min-height: 100dvh;
   margin: 0;
-  background: #000;
+  overflow: hidden;
+  background: #72d9ff;
+}
+
+.crack-stage {
+  --mouse-x: 0;
+  --mouse-y: 0;
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  background: #72d9ff;
+  isolation: isolate;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.distant-world {
+  position: absolute;
+  inset: -6vmax;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.32), transparent 26%),
+    linear-gradient(180deg, #80e3ff 0%, #59cfff 46%, #38b8f2 100%);
+  transform:
+    translate3d(
+      calc(var(--mouse-x) * -18px),
+      calc(var(--mouse-y) * -12px),
+      0
+    )
+    scale(1.04);
+  will-change: transform;
+}
+
+.crack-layer {
+  position: absolute;
+  right: -8vw;
+  left: -8vw;
+  z-index: 3;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  background-repeat: no-repeat;
+  background-size: 116% 116%;
+  filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.42));
+  transform-origin: center;
+  will-change: transform;
+}
+
+.crack-layer-top {
+  top: -9dvh;
+  height: calc(50dvh + 16dvh);
+  background-image: url("/cracks/wall-crack-top-foreground.png");
+  background-position: center bottom;
+  transform:
+    translate3d(
+      calc(var(--mouse-x) * -18px),
+      calc(var(--mouse-y) * -12px),
+      0
+    )
+    rotate(calc(var(--mouse-x) * -0.35deg))
+    scale(1.035);
+}
+
+.crack-layer-bottom {
+  bottom: -9dvh;
+  height: calc(50dvh + 16dvh);
+  background-image: url("/cracks/wall-crack-bottom-foreground.png");
+  background-position: center top;
+  transform:
+    translate3d(
+      calc(var(--mouse-x) * 15px),
+      calc(var(--mouse-y) * 10px),
+      0
+    )
+    rotate(calc(var(--mouse-x) * 0.28deg))
+    scale(1.035);
+}
+
+@media (max-width: 700px) {
+  .crack-layer {
+    right: -28vw;
+    left: -28vw;
+    background-size: 136% 118%;
+  }
+
+  .crack-layer-top {
+    top: -8dvh;
+    height: calc(50dvh + 15dvh);
+  }
+
+  .crack-layer-bottom {
+    bottom: -8dvh;
+    height: calc(50dvh + 15dvh);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .distant-world,
+  .crack-layer {
+    transform: none;
+    will-change: auto;
+  }
 }
