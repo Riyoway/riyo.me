@@ -1,9 +1,64 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function CrackPortalStage() {
   const stageRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isInteractive, setIsInteractive] = useState(false);
+
+  useEffect(() => {
+    let isCancelled = false;
+    let interactiveTimer = 0;
+
+    const waitForWindowLoad = () => {
+      if (document.readyState === "complete") {
+        return Promise.resolve();
+      }
+
+      return new Promise<void>((resolve) => {
+        window.addEventListener("load", () => resolve(), { once: true });
+      });
+    };
+
+    const preloadImage = (src: string) =>
+      new Promise<void>((resolve) => {
+        const image = new Image();
+
+        image.onload = () => {
+          if (image.decode) {
+            image.decode().then(() => resolve()).catch(() => resolve());
+            return;
+          }
+
+          resolve();
+        };
+        image.onerror = () => resolve();
+        image.src = src;
+      });
+
+    Promise.all([
+      waitForWindowLoad(),
+      preloadImage("/cracks/wall-crack-top-foreground.png"),
+      preloadImage("/cracks/wall-crack-bottom-foreground.png"),
+    ]).then(() => {
+      if (isCancelled) {
+        return;
+      }
+
+      window.requestAnimationFrame(() => {
+        setIsOpen(true);
+        interactiveTimer = window.setTimeout(() => {
+          setIsInteractive(true);
+        }, 1250);
+      });
+    });
+
+    return () => {
+      isCancelled = true;
+      window.clearTimeout(interactiveTimer);
+    };
+  }, []);
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -59,7 +114,11 @@ export default function CrackPortalStage() {
   }, []);
 
   return (
-    <main className="crack-stage" ref={stageRef} aria-label="割れ目の奥に水色の背景が見えるテスト画面">
+    <main
+      className={`crack-stage${isOpen ? " is-open" : ""}${isInteractive ? " is-interactive" : ""}`}
+      ref={stageRef}
+      aria-label="割れ目の奥に水色の背景が見えるテスト画面"
+    >
       <div className="distant-world" aria-hidden="true" />
       <div className="portal-vfx" aria-hidden="true">
         <span className="portal-glow" />

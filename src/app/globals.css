@@ -4,28 +4,39 @@
 
 html {
   overflow: hidden;
-  background: #72d9ff;
+  background: #000;
 }
 
 body {
   min-height: 100dvh;
   margin: 0;
   overflow: hidden;
-  background: #72d9ff;
+  background: #000;
 }
 
 .crack-stage {
   --mouse-x: 0;
   --mouse-y: 0;
   --crack-angle: -2.6deg;
+  --top-open-shift: 24dvh;
+  --bottom-open-shift: -24dvh;
+  --world-opacity: 0;
+  --vfx-opacity: 0;
   position: relative;
   width: 100vw;
   height: 100dvh;
   overflow: hidden;
-  background: #72d9ff;
+  background: #000;
   isolation: isolate;
   user-select: none;
   -webkit-user-select: none;
+}
+
+.crack-stage.is-open {
+  --top-open-shift: 0dvh;
+  --bottom-open-shift: 0dvh;
+  --world-opacity: 1;
+  --vfx-opacity: 1;
 }
 
 .distant-world {
@@ -42,6 +53,8 @@ body {
       0
     )
     scale(1.04);
+  opacity: var(--world-opacity);
+  transition: opacity 460ms ease;
   will-change: transform;
 }
 
@@ -53,6 +66,7 @@ body {
   z-index: 1;
   height: 26%;
   overflow: hidden;
+  opacity: var(--vfx-opacity);
   pointer-events: none;
   user-select: none;
   -webkit-user-select: none;
@@ -65,6 +79,7 @@ body {
     rotate(var(--crack-angle))
     scale(1.08);
   transform-origin: center;
+  transition: opacity 520ms ease 430ms;
   will-change: transform;
 }
 
@@ -223,6 +238,10 @@ body {
   will-change: transform;
 }
 
+.crack-stage:not(.is-interactive) .crack-layer {
+  transition: transform 1150ms cubic-bezier(0.2, 0.92, 0.18, 1);
+}
+
 .crack-layer-top {
   top: -16dvh;
   height: calc(50dvh + 13dvh);
@@ -231,7 +250,7 @@ body {
   transform:
     translate3d(
       calc(var(--mouse-x) * -18px),
-      calc(var(--mouse-y) * -12px),
+      calc((var(--mouse-y) * -12px) + var(--top-open-shift)),
       0
     )
     rotate(var(--crack-angle))
@@ -247,7 +266,7 @@ body {
   transform:
     translate3d(
       calc(var(--mouse-x) * 15px),
-      calc(var(--mouse-y) * 10px),
+      calc((var(--mouse-y) * 10px) + var(--bottom-open-shift)),
       0
     )
     rotate(var(--crack-angle))
@@ -256,6 +275,11 @@ body {
 }
 
 @media (max-width: 700px) {
+  .crack-stage {
+    --top-open-shift: 20dvh;
+    --bottom-open-shift: -20dvh;
+  }
+
   .portal-vfx {
     top: 39%;
     right: -38vw;
@@ -281,6 +305,14 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .crack-stage,
+  .crack-stage.is-open {
+    --top-open-shift: 0dvh;
+    --bottom-open-shift: 0dvh;
+    --world-opacity: 1;
+    --vfx-opacity: 1;
+  }
+
   .distant-world,
   .portal-vfx,
   .portal-vfx::before,
@@ -291,6 +323,7 @@ body {
   .crack-layer {
     animation: none;
     transform: none;
+    transition: none;
     will-change: auto;
   }
 }
